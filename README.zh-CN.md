@@ -1,202 +1,71 @@
-<p align="center">
-  <img src="docs/logo.svg" alt="Reasonix" width="640"/>
-</p>
+# 我对 DeepSeek-Reasonix 的贡献
 
-<p align="center">
-  <a href="./README.md">English</a>
-  &nbsp;·&nbsp;
-  <strong>简体中文</strong>
-  &nbsp;·&nbsp;
-  <a href="./docs/GUIDE.zh-CN.md">指南</a>
-  &nbsp;·&nbsp;
-  <a href="./docs/ACP.zh-CN.md">ACP</a>
-  &nbsp;·&nbsp;
-  <a href="./docs/SPEC.zh-CN.md">规格</a>
-  &nbsp;·&nbsp;
-  <a href="https://esengine.github.io/DeepSeek-Reasonix/">官方网站</a>
-  &nbsp;·&nbsp;
-  <strong><a href="https://discord.gg/XF78rEME2D">Discord</a></strong>
-</p>
+[English](README.md) | 中文
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/reasonix"><img src="https://img.shields.io/npm/v/reasonix.svg?style=flat-square&color=cb3837&labelColor=161b22&logo=npm&logoColor=white" alt="npm version"/></a>
-  <a href="https://github.com/esengine/DeepSeek-Reasonix/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/esengine/DeepSeek-Reasonix/ci.yml?style=flat-square&label=ci&labelColor=161b22&logo=githubactions&logoColor=white" alt="CI"/></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/npm/l/reasonix.svg?style=flat-square&color=8b949e&labelColor=161b22" alt="license"/></a>
-  <a href="https://www.npmjs.com/package/reasonix"><img src="https://img.shields.io/npm/dm/reasonix.svg?style=flat-square&color=3fb950&labelColor=161b22&label=downloads" alt="downloads"/></a>
-  <a href="https://github.com/esengine/DeepSeek-Reasonix/stargazers"><img src="https://img.shields.io/github/stars/esengine/DeepSeek-Reasonix.svg?style=flat-square&color=dbab09&labelColor=161b22&logo=github&logoColor=white" alt="GitHub stars"/></a>
-  <a href="https://atomgit.com/esengine/DeepSeek-Reasonix"><img src="https://atomgit.com/esengine/DeepSeek-Reasonix/star/badge.svg" alt="AtomGit stars"/></a>
-  <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors"><img src="https://img.shields.io/github/contributors/esengine/DeepSeek-Reasonix.svg?style=flat-square&color=bc8cff&labelColor=161b22&logo=github&logoColor=white" alt="contributors"/></a>
-  <a href="https://github.com/esengine/DeepSeek-Reasonix/discussions"><img src="https://img.shields.io/github/discussions/esengine/DeepSeek-Reasonix.svg?style=flat-square&color=58a6ff&labelColor=161b22&logo=github&logoColor=white" alt="Discussions"/></a>
-  <a href="https://discord.gg/XF78rEME2D"><img src="https://img.shields.io/badge/discord-join-5865F2.svg?style=flat-square&labelColor=161b22&logo=discord&logoColor=white" alt="Discord"/></a>
-</p>
+此 fork 展示了我对上游项目
+[esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix)
+的贡献；安装、发布和正式文档请前往上游仓库。
 
-<br/>
+## 已合并的贡献
 
-<h3 align="center">面向终端的 DeepSeek 原生 AI coding agent。</h3>
-<p align="center">由配置与插件驱动的极薄 harness——单一静态 Go 二进制，围绕 DeepSeek 的前缀缓存调优，长会话也能把 token 成本压低。</p>
+| PR | 状态 | 日期 | 贡献内容 | PR 元数据 |
+| --- | --- | --- | --- | --- |
+| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 已合并 | 2026-07-22 | 完善主题面板透明度体系，新增 5 层透明度等级，并修复 Windows 无边框窗口下侧栏标签压缩问题。 | 2 文件, +331/-13 |
+| [#6645](https://github.com/esengine/DeepSeek-Reasonix/pull/6645) | 已合并 | 2026-07-19 | 新增按场景的面板透明度控制，修复自定义主题保存后基础风格回退问题。 | 19 文件, +1594/-76 |
+| [#6539](https://github.com/esengine/DeepSeek-Reasonix/pull/6539) | 已合并 | 2026-07-20 | 修复供应商模型较多或名称较长时设置页面模型列表选项重叠。关闭 #5563, #5585, #5785, #6480, #6723。 | 1 文件, +3/-2 |
+| [#6004](https://github.com/esengine/DeepSeek-Reasonix/pull/6004) | 已合并 | 2026-07-05 | 新增 `REASONIX_HOME` 环境变量支持，用于隔离配置、技能和输出风格目录扫描。关闭 #5988。 | 6 文件, +269/-15 |
+| [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | 已合并 | 2026-07-04 | 为输入框和消息气泡中的图片附件增加点击预览功能。关闭 #5832。 | 8 文件, +259/-19 |
+| [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | 已合并 | 2026-07-03 | 修复桌面端粘贴文本在消息气泡中仅显示折叠标签而非实际内容。关闭 #5863。 | 5 文件, +193/-3 |
 
-<br/>
+已合并总计：6 个 PR，41 个变更文件，+2649/-128 行。
 
-> [!IMPORTANT]
-> **加入社区 · Community** — 双语 Discord，提供安装答疑（`#help` / `#求助`）、工作流展示与功能想法。→ **<https://discord.gg/XF78rEME2D>**
+## 待审核的贡献
 
-## 特性
-
-- **配置驱动**：provider、agent、启用的工具、插件全部在 `reasonix.toml` 中声明，
-  内核无硬编码模型。
-- **多模型 · 可组合**：DeepSeek 作为预设内置；任何 OpenAI 兼容
-  端点都只是一条配置。可选让两个模型协同（执行器 + 规划器），各自独立、缓存稳定的 session。
-- **插件驱动**：外部工具以子进程形式运行，通过 stdio JSON-RPC 通信（MCP 兼容）；
-  内置工具在编译期自注册。
-- **缓存友好的上下文维护**：启动时注入稳定的环境摘要；旧工具输出会先 snip/prune，
-  再进入摘要 compaction；内置工具 schema 合约有文档和回归测试保护。
-- **零摩擦分发**：`CGO_ENABLED=0` 单二进制；一条命令交叉编译到六个目标平台。
-  唯一依赖是一个 TOML 解析库。
-
-## 安装
-
-选择适合你的使用路径。CLI/TUI、桌面端和 VS Code 扩展都使用同一套本地
-Reasonix 引擎。
-
-### 路径 A：CLI / TUI
-
-任意支持的平台都可以通过 npm 安装原生二进制；macOS 也可以使用 Homebrew：
-
-```sh
-npm i -g reasonix                  # 任意系统;自动拉取对应平台的原生二进制
-brew install esengine/reasonix/reasonix   # macOS
-```
-
-预编译归档(`darwin|linux|windows × amd64|arm64`)和 `SHA256SUMS` 见每个
-[GitHub release](https://github.com/esengine/DeepSeek-Reasonix/releases)。
-
-### 路径 B：桌面端
-
-前往[官方下载页](https://reasonix.io/?download=desktop#start)获取最新桌面版本。
-
-| 平台 | 安装包 | 架构 |
-| --- | --- | --- |
-| macOS | 通用 `.dmg` 或 `.zip` | Apple Silicon / Intel |
-| Windows | 安装器 `.exe` 或便携 `.zip` | x64 / ARM64 |
-| Linux | `.deb` 或 `.tar.gz` | x64 |
-
-Windows 安装器通过 [SignPath.io](https://signpath.io/) 完成代码签名，证书由
-[SignPath 基金会](https://signpath.org/) 免费提供。
-
-### 路径 C：VS Code 扩展
-
-请先完成路径 A。扩展不内置 CLI，而是启动本机的 `reasonix acp` 后端，
-并提供原生聊天、编辑器上下文、工具调用审批、模型选择和工作区会话。
-
-- **VS Code：** [从 Visual Studio Marketplace 安装](https://marketplace.visualstudio.com/items?itemName=SivanLiu.reasonix-agent)
-- **VSCodium / Eclipse Theia：** [从 Open VSX Registry 安装](https://open-vsx.org/extension/SivanLiu/reasonix-agent)
-- **扩展 ID：** `SivanLiu.reasonix-agent` · [源码与使用说明](https://github.com/SivanCola/reasonix-vscode)
-
-### 路径 D：从源码构建
-
-```sh
-git clone https://github.com/esengine/DeepSeek-Reasonix.git
-cd DeepSeek-Reasonix
-make build      # -> bin/reasonix(.exe)
-make cross      # -> dist/（darwin|linux|windows × amd64|arm64）
-```
-
-## 快速开始
-
-### CLI / TUI
-
-以下命令仅适用于通过路径 A 安装的 CLI/TUI：
-
-```sh
-reasonix setup                      # 配置 provider 和模型
-reasonix                            # 启动交互式会话
-reasonix run "把 main.go 里的 TODO 实现掉"
-```
-
-需要项目指令时，可在交互式会话中运行 `/init`。
-
-### 桌面端
-
-从[官方下载页](https://reasonix.io/?download=desktop#start)下载对应系统的安装包，
-安装并启动 Reasonix，然后在应用内配置 provider 和模型即可使用。桌面端无需执行
-上面的 CLI 命令。
-
-CLI 进阶用法和详细配置见 **[CLI 命令参考](./docs/CLI.zh-CN.md)**、
-**[指南](./docs/GUIDE.zh-CN.md)** 和
-**[配置路径](./docs/CONFIG_PATHS.zh-CN.md)**。
-
-## 文档
-
-- **开始使用：** [指南](./docs/GUIDE.zh-CN.md) ·
-  [CLI 命令参考](./docs/CLI.zh-CN.md) · [配置路径](./docs/CONFIG_PATHS.zh-CN.md) ·
-  [ACP 编辑器接入](./docs/ACP.zh-CN.md)
-- **功能与排障：** [子智能体 Profile](./docs/SUBAGENT_PROFILES.zh-CN.md) ·
-  [能力诊断](./docs/CAPABILITY_DIAGNOSTICS.zh-CN.md) ·
-  [恢复与安全模式](./docs/RECOVERY.zh-CN.md) ·
-  [机器人使用指南](./docs/BOT_GUIDE.zh-CN.md) ·
-  [Checkpoints 与 rewind](./docs/CHECKPOINTS.zh-CN.md)
-- **工程与迁移：** [规格](./docs/SPEC.zh-CN.md) ·
-  [任务合约与暂停策略](./docs/TASK_CONTRACT.zh-CN.md) ·
-  [工具合约](./docs/TOOL_CONTRACT.zh-CN.md) ·
-  [从 0.x 迁移](./docs/MIGRATING.zh-CN.md)
-
-## Star 趋势
-
-<a href="https://www.star-history.com/?repos=esengine%2FDeepSeek-Reasonix&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/star-history/assets/star-history/star-history-dark.svg" />
-   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/star-history/assets/star-history/star-history-light.svg" />
-   <img alt="Star History Chart" src="https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/star-history/assets/star-history/star-history-light.svg" />
- </picture>
-</a>
-
-<br/>
-
-## 致谢
-
-下面这些朋友的工作塑造了 Reasonix 今天的样子 —— 当前按 commit 数统计的前 20 名贡献者。
-完整贡献者列表在
-[GitHub](https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors?all=1)。
-
-<!-- reasonix-top-contributors:start -->
-| Contributor | Contributor | Contributor | Contributor |
+| PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
-| [**SivanCola**](https://github.com/SivanCola) | [**esengine**](https://github.com/esengine) | [**ttmouse**](https://github.com/ttmouse) | [**lifu963**](https://github.com/lifu963) |
-| **reasonix**（anonymous） | [**HUQIANTAO**](https://github.com/HUQIANTAO) | [**GTC2080**](https://github.com/GTC2080) | [**light-front-theory**](https://github.com/light-front-theory) |
-| **merge-order-check**（anonymous） | [**Li-Charles-One**](https://github.com/Li-Charles-One) | [**eghrhegpe**](https://github.com/eghrhegpe) | **wufengfan**（anonymous） |
-| [**CVEngineer66**](https://github.com/CVEngineer66) | [**dependabot\[bot\]**](https://github.com/apps/dependabot) | [**lanshi17**](https://github.com/lanshi17) | [**SuMuxi66**](https://github.com/SuMuxi66) |
-| [**CnsMaple**](https://github.com/CnsMaple) | [**cyq1017**](https://github.com/cyq1017) | [**JesonChou**](https://github.com/JesonChou) | [**XTLine**](https://github.com/XTLine) |
-<!-- reasonix-top-contributors:end -->
+| [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
+| [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
-另外特别感谢 [**Bernardxu123**](https://github.com/Bernardxu123) 设计的项目 logo，
-以及 [AIGC Link](https://xhslink.com/m/80ngts127cA) 在小红书上的推广。
+## 被维护者吸收的贡献
 
-<p align="center">
-  <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=esengine/DeepSeek-Reasonix&max=100&columns=12" alt="esengine/DeepSeek-Reasonix 贡献者" width="860"/>
-  </a>
-</p>
+这些 PR 在维护者将其内容整合到自己的 PR 中后由我关闭：
 
-<br/>
+| 我的 PR | 维护者 PR | 日期 | 关系 |
+| --- | --- | --- | --- |
+| [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | 分段按钮等宽方案被明确整合，并附带 `Co-authored-by` 提交记录。 |
+| [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | 逐模型 `context_window` 覆盖功能被重写并作为官方实现落地。 |
+| [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP 持久化禁用概念被整合到更广泛的"默认信任"重构中。 |
+| [#6104](https://github.com/esengine/DeepSeek-Reasonix/pull/6104) | [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 2026-07-22 | 侧栏标签压缩方案被合并到完整的主题面板透明度 PR 中。 |
 
----
+## 维护者 PR 中致谢的 Bug 报告
 
-<p align="center">
-  <sub>MIT —— 见 <a href="./LICENSE">LICENSE</a></sub>
-  <br/>
-  <sub>由 <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors">esengine/DeepSeek-Reasonix</a> 社区共建</sub>
-</p>
+| Issue / 报告 | 维护者 PR | 日期 | 描述 |
+| --- | --- | --- | --- |
+| [#6590](https://github.com/esengine/DeepSeek-Reasonix/issues/6590) | [#6694](https://github.com/esengine/DeepSeek-Reasonix/pull/6694) | 2026-07-19 | 报告了设置刷新后主题配色回退的问题；修复已合并并明确致谢。 |
 
----
+## 发布说明致谢
 
-<p align="center"><sub><strong>支持本项目</strong></sub></p>
+我的贡献在以下发布说明中获得致谢：
 
-如果 Reasonix 帮你省了时间或 token，欢迎请杯咖啡。捐助不会换来 feature
-优先级，也不会影响 issue 的处理顺序——就是「谢谢」。
+- [v1.17.21](https://github.com/esengine/DeepSeek-Reasonix/pull/6929) — 2026-07-25
+- [v1.17.17](https://github.com/esengine/DeepSeek-Reasonix/pull/6743) — 2026-07-22
+- [v1.17.16](https://github.com/esengine/DeepSeek-Reasonix/pull/6709) — 2026-07-20
 
-- **国内** — 微信支付（扫下方二维码）
-- **海外** — PayPal: [paypal.me/yuhuahui](https://paypal.me/yuhuahui)
+## 贡献主题
 
-<p align="center">
-  <img src=".github/sponsor/wechat-pay.jpg" alt="微信支付收款码" width="180"/>
-</p>
+- **桌面主题系统**：面板透明度控制、场景级透明度分层、保存/应用状态正确性、Windows 无边框窗口下侧栏标签压缩。
+- **UI Bug 修复**：模型列表重叠、粘贴文本显示、图片预览、安全区域按钮宽度、自然文件排序。
+- **配置隔离**：`REASONIX_HOME` 环境变量支持隔离配置、技能和输出风格扫描。
+- **功能提案**：逐模型上下文窗口覆盖、MCP 持久化禁用、状态栏吞吐量显示。
+
+## 分支用途
+
+此分支作为我 fork 的展示页面。常规开发分支可以保持与上游同步，而此分支为访问者提供一个快速、可读的视图，展示已在官方仓库落地的具体贡献。
+
+## 数据来源
+
+由 `HaoyueQin` 提交的上游已关闭 PR：
+
+https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
+
+最后更新：2026-07-25。
