@@ -10,6 +10,7 @@
 
 | PR | 状态 | 日期 | 贡献内容 | PR 元数据 |
 | --- | --- | --- | --- | --- |
+| [#7064](https://github.com/esengine/DeepSeek-Reasonix/pull/7064) | 已合并 | 2026-07-30 | 修复桌面端切换会话和重启后粘贴文本和文件引用内联卡片丢失折叠状态。关闭 #7051。 | 4 文件, +45/-12 |
 | [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 已合并 | 2026-07-22 | 完善主题面板透明度体系，新增 5 层透明度等级，并修复 Windows 无边框窗口下侧栏标签压缩问题。 | 2 文件, +331/-13 |
 | [#6645](https://github.com/esengine/DeepSeek-Reasonix/pull/6645) | 已合并 | 2026-07-19 | 新增按场景的面板透明度控制，修复自定义主题保存后基础风格回退问题。 | 19 文件, +1594/-76 |
 | [#6539](https://github.com/esengine/DeepSeek-Reasonix/pull/6539) | 已合并 | 2026-07-20 | 修复供应商模型较多或名称较长时设置页面模型列表选项重叠。关闭 #5563, #5585, #5785, #6480, #6723。 | 1 文件, +3/-2 |
@@ -17,14 +18,15 @@
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | 已合并 | 2026-07-04 | 为输入框和消息气泡中的图片附件增加点击预览功能。关闭 #5832。 | 8 文件, +259/-19 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | 已合并 | 2026-07-03 | 修复桌面端粘贴文本在消息气泡中仅显示折叠标签而非实际内容。关闭 #5863。 | 5 文件, +193/-3 |
 
-已合并总计：6 个 PR，41 个变更文件，+2649/-128 行。
+已合并总计：7 个 PR，45 个变更文件，+2694/-140 行。
 
 ## 待审核的贡献
 
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
 | [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | 待审核 | 2026-07-30 | 将终端重构为独立底部抽屉，添加拖拽调整大小手柄和手风琴动画，修复与右侧面板的布局冲突。修复 #7046, #7047。 |
-| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | 待审核 | 2026-07-30 | 通过重构布局为状态栏分配独立 grid 行，修复决策卡片溢出被底部信息栏遮挡的问题。为 #7069 奠定基础。 |
+| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | 待审核 | 2026-07-30 | 通过重构布局为状态栏分配独立 grid 行，修复决策卡片溢出被底部信息栏遮挡的问题。修复 #7030。 |
+| [#6995](https://github.com/esengine/DeepSeek-Reasonix/pull/6995) | 待审核 | 2026-07-28 | 修复切换会话后右侧栏和状态栏数据丢失，持久化单轮 token 构成明细并修复 hydration 竞态条件。修复 #5335, #5766, #7068。 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
