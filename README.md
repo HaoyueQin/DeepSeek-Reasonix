@@ -24,6 +24,8 @@ Merged total from the upstream PR metadata above: 6 PRs, 41 changed-file entries
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
+| [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | Open | 2026-07-30 | Separated the terminal as an independent bottom drawer with a resize handle and accordion animation, repaired layout conflicts with right dock. Fixes #7046, #7047. |
+| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Open | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Foundation for #7069. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
@@ -55,7 +57,8 @@ My contributions have been acknowledged in the following release notes:
 ## Contribution Themes
 
 - **Desktop theme system**: pane opacity controls, scene-level transparency tiers, save/apply state correctness, and dock-tab compression on Windows frameless.
-- **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, and natural file sorting.
+- **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, decision card overflow, and natural file sorting.
+- **Terminal drawer**: re-architected the terminal as an independent bottom drawer with resize handle and accordion animation.
 - **Configuration isolation**: `REASONIX_HOME` environment variable for isolated config, skills, and output-style scanning.
 - **Feature proposals**: per-model context window overrides, MCP persistent disable, and status bar throughput display.
 
@@ -71,4 +74,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-07-25.
+Last refreshed: 2026-07-30.
