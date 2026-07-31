@@ -10,8 +10,8 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
+| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Merged | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. | 3 files, +149/-135 |
 | [#7064](https://github.com/esengine/DeepSeek-Reasonix/pull/7064) | Merged | 2026-07-30 | Fixed pasted text and file ref inline cards losing collapse state across session switches and app restarts. Closes #7051. | 4 files, +45/-12 |
-| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | Merged | 2026-07-22 | Completed the theme pane transparency system with 5-tier opacity layers and fixed dock-tab compression on Windows frameless. | 2 files, +331/-13 |
 | [#6645](https://github.com/esengine/DeepSeek-Reasonix/pull/6645) | Merged | 2026-07-19 | Added per-scene pane opacity controls and fixed the save/apply state flow for custom themes. | 19 files, +1594/-76 |
 | [#6539](https://github.com/esengine/DeepSeek-Reasonix/pull/6539) | Merged | 2026-07-20 | Fixed model list option overlap when a provider returns many models or long names. Closes #5563, #5585, #5785, #6480, #6723. | 1 file, +3/-2 |
 | [#6004](https://github.com/esengine/DeepSeek-Reasonix/pull/6004) | Merged | 2026-07-05 | Added `REASONIX_HOME` environment variable support for isolated configuration, skills, and output-style directory scanning. Closes #5988. | 6 files, +269/-15 |
@@ -29,6 +29,7 @@ Merged total from the upstream PR metadata above: 7 PRs, 45 changed-file entries
 | [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Open | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. |
 | [#6995](https://github.com/esengine/DeepSeek-Reasonix/pull/6995) | Open | 2026-07-28 | Fixed right-panel and status-bar data loss across session switches by persisting per-turn token breakdown and fixing hydration race conditions. Fixes #5335, #5766, #7068. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
+| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | Open | 2026-07-22 | Completed the theme pane transparency system with 5-tier opacity layers and fixed dock-tab compression on Windows frameless. Closes #5825. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
 ## Contributions Absorbed by Maintainer

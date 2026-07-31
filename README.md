@@ -10,8 +10,8 @@
 
 | PR | 状态 | 日期 | 贡献内容 | PR 元数据 |
 | --- | --- | --- | --- | --- |
+| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | 已合并 | 2026-07-30 | 通过重构布局为状态栏分配独立 grid 行，修复决策卡片溢出被底部信息栏遮挡的问题。修复 #7030。 | 3 文件, +149/-135 |
 | [#7064](https://github.com/esengine/DeepSeek-Reasonix/pull/7064) | 已合并 | 2026-07-30 | 修复桌面端切换会话和重启后粘贴文本和文件引用内联卡片丢失折叠状态。关闭 #7051。 | 4 文件, +45/-12 |
-| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 已合并 | 2026-07-22 | 完善主题面板透明度体系，新增 5 层透明度等级，并修复 Windows 无边框窗口下侧栏标签压缩问题。 | 2 文件, +331/-13 |
 | [#6645](https://github.com/esengine/DeepSeek-Reasonix/pull/6645) | 已合并 | 2026-07-19 | 新增按场景的面板透明度控制，修复自定义主题保存后基础风格回退问题。 | 19 文件, +1594/-76 |
 | [#6539](https://github.com/esengine/DeepSeek-Reasonix/pull/6539) | 已合并 | 2026-07-20 | 修复供应商模型较多或名称较长时设置页面模型列表选项重叠。关闭 #5563, #5585, #5785, #6480, #6723。 | 1 文件, +3/-2 |
 | [#6004](https://github.com/esengine/DeepSeek-Reasonix/pull/6004) | 已合并 | 2026-07-05 | 新增 `REASONIX_HOME` 环境变量支持，用于隔离配置、技能和输出风格目录扫描。关闭 #5988。 | 6 文件, +269/-15 |
@@ -28,6 +28,7 @@
 | [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | 待审核 | 2026-07-30 | 通过重构布局为状态栏分配独立 grid 行，修复决策卡片溢出被底部信息栏遮挡的问题。修复 #7030。 |
 | [#6995](https://github.com/esengine/DeepSeek-Reasonix/pull/6995) | 待审核 | 2026-07-28 | 修复切换会话后右侧栏和状态栏数据丢失，持久化单轮 token 构成明细并修复 hydration 竞态条件。修复 #5335, #5766, #7068。 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
+| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 待审核 | 2026-07-22 | 完善主题面板透明度体系，新增 5 层透明度等级，并修复 Windows 无边框窗口下侧栏标签压缩问题。关闭 #5825。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
 ## 被维护者吸收的贡献
