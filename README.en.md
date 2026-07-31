@@ -10,24 +10,25 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
-| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Merged | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. | 3 files, +149/-135 |
-| [#7064](https://github.com/esengine/DeepSeek-Reasonix/pull/7064) | Merged | 2026-07-30 | Fixed pasted text and file ref inline cards losing collapse state across session switches and app restarts. Closes #7051. | 4 files, +45/-12 |
-| [#6645](https://github.com/esengine/DeepSeek-Reasonix/pull/6645) | Merged | 2026-07-19 | Added per-scene pane opacity controls and fixed the save/apply state flow for custom themes. | 19 files, +1594/-76 |
-| [#6539](https://github.com/esengine/DeepSeek-Reasonix/pull/6539) | Merged | 2026-07-20 | Fixed model list option overlap when a provider returns many models or long names. Closes #5563, #5585, #5785, #6480, #6723. | 1 file, +3/-2 |
-| [#6004](https://github.com/esengine/DeepSeek-Reasonix/pull/6004) | Merged | 2026-07-05 | Added `REASONIX_HOME` environment variable support for isolated configuration, skills, and output-style directory scanning. Closes #5988. | 6 files, +269/-15 |
-| [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 8 files, +259/-19 |
-| [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 5 files, +193/-3 |
+| [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | Merged | 2026-07-31 | Separated the terminal as an independent bottom drawer with a resize handle and accordion animation, repaired layout conflicts with right dock. Fixes #7046, #7047. | 7 files, +420/-51 |
+| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Merged | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. | 4 files, +95/-56 |
+| [#7064](https://github.com/esengine/DeepSeek-Reasonix/pull/7064) | Merged | 2026-07-30 | Fixed pasted text and file ref inline cards losing collapse state across session switches and app restarts. Closes #7051. | 4 files, +235/-25 |
+| [#6995](https://github.com/esengine/DeepSeek-Reasonix/pull/6995) | Merged | 2026-07-30 | Fixed right-panel and status-bar data loss across session switches by persisting per-turn token breakdown and fixing hydration race conditions. Fixes #5335, #5766, #7068. | 6 files, +203/-19 |
+| [#6645](https://github.com/esengine/DeepSeek-Reasonix/pull/6645) | Merged | 2026-07-19 | Added per-scene pane opacity controls and fixed the save/apply state flow for custom themes. | 26 files, +456/-72 |
+| [#6539](https://github.com/esengine/DeepSeek-Reasonix/pull/6539) | Merged | 2026-07-20 | Fixed model list option overlap when a provider returns many models or long names. Closes #5563, #5585, #5785, #6480, #6723. | 2 files, +6/-2 |
+| [#6252](https://github.com/esengine/DeepSeek-Reasonix/pull/6252) | Merged | 2026-07-09 | Fixed bot settings field overflow in Creation style and right-side overflow in the QR setup panel. Closes #6064, #6196. | 1 file, +25/-11 |
+| [#6019](https://github.com/esengine/DeepSeek-Reasonix/pull/6019) | Merged | 2026-07-08 | Fixed the settings sidebar flipping to horizontal tabs on narrow windows via continuous `clamp()`-based responsive transitions. Closes #5985. | 1 file, +7/-60 |
+| [#6004](https://github.com/esengine/DeepSeek-Reasonix/pull/6004) | Merged | 2026-07-05 | Added `REASONIX_HOME` environment variable support for isolated configuration, skills, and output-style directory scanning. Closes #5988. | 19 files, +322/-49 |
+| [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 10 files, +421/-27 |
+| [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 7 files, +211/-4 |
 
-Merged total from the upstream PR metadata above: 7 PRs, 45 changed-file entries,
-+2694/-140 lines.
+Merged total from the upstream PR metadata above: 11 PRs, 87 changed-file entries,
++2401/-376 lines.
 
 ## Open Contributions
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
-| [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | Open | 2026-07-30 | Separated the terminal as an independent bottom drawer with a resize handle and accordion animation, repaired layout conflicts with right dock. Fixes #7046, #7047. |
-| [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Open | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. |
-| [#6995](https://github.com/esengine/DeepSeek-Reasonix/pull/6995) | Open | 2026-07-28 | Fixed right-panel and status-bar data loss across session switches by persisting per-turn token breakdown and fixing hydration race conditions. Fixes #5335, #5766, #7068. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | Open | 2026-07-22 | Completed the theme pane transparency system with 5-tier opacity layers and fixed dock-tab compression on Windows frameless. Closes #5825. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
@@ -77,4 +78,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-07-30.
+Last refreshed: 2026-08-01.
