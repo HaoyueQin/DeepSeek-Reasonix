@@ -29,7 +29,6 @@
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
-| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 待审核 | 2026-07-22 | 完善主题面板透明度体系，新增 5 层透明度等级，并修复 Windows 无边框窗口下侧栏标签压缩问题。关闭 #5825。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
 ## 被维护者吸收的贡献
@@ -41,7 +40,8 @@
 | [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | 分段按钮等宽方案被明确整合，并附带 `Co-authored-by` 提交记录。 |
 | [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | 逐模型 `context_window` 覆盖功能被重写并作为官方实现落地。 |
 | [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP 持久化禁用概念被整合到更广泛的"默认信任"重构中。 |
-| [#6104](https://github.com/esengine/DeepSeek-Reasonix/pull/6104) | [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 2026-07-22 | 侧栏标签压缩方案被合并到完整的主题面板透明度 PR 中。 |
+| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | [#7159](https://github.com/esengine/DeepSeek-Reasonix/pull/7159) | 2026-08-02 | 5 层透明度体系与 Windows 无边框侧栏压缩被完整整合：原始提交逐行原样并入（327 行中 321 行保留，作者署名保留），适配提交带 `Co-authored-by` 记录。关闭 #5825。 |
+| [#6104](https://github.com/esengine/DeepSeek-Reasonix/pull/6104) | [#7159](https://github.com/esengine/DeepSeek-Reasonix/pull/7159) | 2026-08-02 | 侧栏标签压缩方案并入主题面板透明度体系，最终随 #7159 完整落地。 |
 
 ## 维护者 PR 中致谢的 Bug 报告
 
@@ -59,7 +59,7 @@
 
 ## 贡献主题
 
-- **桌面主题系统**：面板透明度控制、场景级透明度分层、保存/应用状态正确性、Windows 无边框窗口下侧栏标签压缩。
+- **桌面主题系统**：面板透明度控制、场景级透明度分层（经 #7159 完整落地）、保存/应用状态正确性、Windows 无边框窗口下侧栏标签压缩。
 - **UI Bug 修复**：模型列表重叠、粘贴文本显示、图片预览、安全区域按钮宽度、决策卡片溢出、自然文件排序。
 - **终端抽屉**：将终端重构为独立底部抽屉，添加拖拽调整大小手柄和手风琴动画。
 - **配置隔离**：`REASONIX_HOME` 环境变量支持隔离配置、技能和输出风格扫描。
@@ -75,4 +75,4 @@
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-最后更新：2026-08-01。
+最后更新：2026-08-02。

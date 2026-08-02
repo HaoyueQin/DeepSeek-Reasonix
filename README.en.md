@@ -30,7 +30,6 @@ Merged total from the upstream PR metadata above: 11 PRs, 87 changed-file entrie
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
-| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | Open | 2026-07-22 | Completed the theme pane transparency system with 5-tier opacity layers and fixed dock-tab compression on Windows frameless. Closes #5825. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
 ## Contributions Absorbed by Maintainer
@@ -42,7 +41,8 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 | [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | Equal-width segmented-button selector explicitly incorporated with `Co-authored-by` trailer. |
 | [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | Per-model `context_window` override feature rewritten and landed as the official implementation. |
 | [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP persistent disable concept incorporated into the broader "default trust" redesign. |
-| [#6104](https://github.com/esengine/DeepSeek-Reasonix/pull/6104) | [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | 2026-07-22 | Dock-tab compression approach merged into the complete theme pane transparency PR. |
+| [#6783](https://github.com/esengine/DeepSeek-Reasonix/pull/6783) | [#7159](https://github.com/esengine/DeepSeek-Reasonix/pull/7159) | 2026-08-02 | 5-tier pane transparency and Windows frameless dock compression fully integrated: the original commit was cherry-picked verbatim with authorship preserved (321 of 327 lines intact), and the adaptation commit carries a `Co-authored-by` trailer. Closes #5825. |
+| [#6104](https://github.com/esengine/DeepSeek-Reasonix/pull/6104) | [#7159](https://github.com/esengine/DeepSeek-Reasonix/pull/7159) | 2026-08-02 | Dock-tab compression approach folded into the theme pane transparency work and landed upstream via #7159. |
 
 ## Bug Reports Acknowledged in Maintainer PRs
 
@@ -60,7 +60,7 @@ My contributions have been acknowledged in the following release notes:
 
 ## Contribution Themes
 
-- **Desktop theme system**: pane opacity controls, scene-level transparency tiers, save/apply state correctness, and dock-tab compression on Windows frameless.
+- **Desktop theme system**: pane opacity controls, scene-level transparency tiers (landed via #7159), save/apply state correctness, and dock-tab compression on Windows frameless.
 - **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, decision card overflow, and natural file sorting.
 - **Terminal drawer**: re-architected the terminal as an independent bottom drawer with resize handle and accordion animation.
 - **Configuration isolation**: `REASONIX_HOME` environment variable for isolated config, skills, and output-style scanning.
@@ -78,4 +78,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-01.
+Last refreshed: 2026-08-02.
