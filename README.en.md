@@ -10,6 +10,7 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
+| [#7238](https://github.com/esengine/DeepSeek-Reasonix/pull/7238) | Merged | 2026-08-03 | Added a usage statistics panel with per-day token heatmap, daily stacked trend chart, and model-usage donut chart; supports 7/14/30/90-day and custom date ranges; all entry points (desktop/CLI/HTTP/bot/Remote Workbench) record through the same `stats.Recorder`; hand-drawn SVG, no third-party chart library; average cache hit rate and model attribution are included. | 64 files, +4332/-155 |
 | [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | Merged | 2026-07-31 | Separated the terminal as an independent bottom drawer with a resize handle and accordion animation, repaired layout conflicts with right dock. Fixes #7046, #7047. | 7 files, +420/-51 |
 | [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Merged | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. | 4 files, +95/-56 |
 | [#7064](https://github.com/esengine/DeepSeek-Reasonix/pull/7064) | Merged | 2026-07-30 | Fixed pasted text and file ref inline cards losing collapse state across session switches and app restarts. Closes #7051. | 4 files, +235/-25 |
@@ -22,13 +23,14 @@ project; installation, releases, and canonical documentation belong there.
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 10 files, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 7 files, +211/-4 |
 
-Merged total from the upstream PR metadata above: 11 PRs, 87 changed-file entries,
-+2401/-376 lines.
+Merged total from the upstream PR metadata above: 12 PRs, 151 changed-file entries,
++6733/-531 lines.
 
 ## Open Contributions
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
+| [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | Open | 2026-08-03 | Fixed three settings-page layout problems at ≤900px: subtabs stretching full width, workspace selector separated from Suggestions button on the memory page, and built-in override cards overflowing the subagents column. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
@@ -54,14 +56,17 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 
 My contributions have been acknowledged in the following release notes:
 
-- [v1.17.21](https://github.com/esengine/DeepSeek-Reasonix/pull/6929) — 2026-07-25
+- [v1.19.5](https://github.com/esengine/DeepSeek-Reasonix/pull/7364) — 2026-08-03 (usage statistics panel)
+- [v1.19.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7117) — 2026-08-01 (terminal drawer redesign, pasted-text & file-ref cards, right-panel & status-bar persistence, decision card overflow)
+- [v1.19.0-preview.1](https://github.com/esengine/DeepSeek-Reasonix/pull/7116) — 2026-08-01 (same four entries)
 - [v1.17.17](https://github.com/esengine/DeepSeek-Reasonix/pull/6743) — 2026-07-22
 - [v1.17.16](https://github.com/esengine/DeepSeek-Reasonix/pull/6709) — 2026-07-20
 
 ## Contribution Themes
 
 - **Desktop theme system**: pane opacity controls, scene-level transparency tiers (landed via #7159), save/apply state correctness, and dock-tab compression on Windows frameless.
-- **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, decision card overflow, and natural file sorting.
+- **Usage statistics panel**: hand-drawn SVG heatmap, trend chart, and donut chart for per-day token usage, cache hit rate, and model distribution across all product entry points.
+- **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, decision card overflow, natural file sorting, and settings-page narrow-window responsive layout.
 - **Terminal drawer**: re-architected the terminal as an independent bottom drawer with resize handle and accordion animation.
 - **Configuration isolation**: `REASONIX_HOME` environment variable for isolated config, skills, and output-style scanning.
 - **Feature proposals**: per-model context window overrides, MCP persistent disable, and status bar throughput display.
@@ -78,4 +83,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-02.
+Last refreshed: 2026-08-03.
