@@ -10,6 +10,7 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
+| [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | Merged | 2026-08-04 | Fixed three settings-page layout problems at ≤900px: subtabs stretching full width, workspace selector separated from Suggestions button on the memory page, and built-in override cards overflowing the subagents column. | 4 files, +108/-20 |
 | [#7238](https://github.com/esengine/DeepSeek-Reasonix/pull/7238) | Merged | 2026-08-03 | Added a usage statistics panel with per-day token heatmap, daily stacked trend chart, and model-usage donut chart; supports 7/14/30/90-day and custom date ranges; all entry points (desktop/CLI/HTTP/bot/Remote Workbench) record through the same `stats.Recorder`; hand-drawn SVG, no third-party chart library; average cache hit rate and model attribution are included. | 64 files, +4332/-155 |
 | [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | Merged | 2026-07-31 | Separated the terminal as an independent bottom drawer with a resize handle and accordion animation, repaired layout conflicts with right dock. Fixes #7046, #7047. | 7 files, +420/-51 |
 | [#7069](https://github.com/esengine/DeepSeek-Reasonix/pull/7069) | Merged | 2026-07-30 | Fixed decision card overflow being hidden behind the status bar by restructuring the layout with a dedicated status bar grid row. Fixes #7030. | 4 files, +95/-56 |
@@ -23,14 +24,13 @@ project; installation, releases, and canonical documentation belong there.
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 10 files, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 7 files, +211/-4 |
 
-Merged total from the upstream PR metadata above: 12 PRs, 151 changed-file entries,
-+6733/-531 lines.
+Merged total from the upstream PR metadata above: 13 PRs, 155 changed-file entries,
++6841/-551 lines.
 
 ## Open Contributions
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
-| [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | Open | 2026-08-03 | Fixed three settings-page layout problems at ≤900px: subtabs stretching full width, workspace selector separated from Suggestions button on the memory page, and built-in override cards overflowing the subagents column. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
@@ -83,4 +83,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-03.
+Last refreshed: 2026-08-04.
