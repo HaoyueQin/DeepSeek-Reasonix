@@ -10,6 +10,7 @@
 
 | PR | 状态 | 日期 | 贡献内容 | PR 元数据 |
 | --- | --- | --- | --- | --- |
+| [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | 已合并 | 2026-08-05 | 使用统计图表改用 Primer 深浅两套配色：前 5 模型按排名各占系列色（`--chart-1`~`--chart-5`），其余归入灰色 Other；修复环形图 hover 溢出裁剪；命令面板新增使用统计入口。 | 9 文件, +310/-134 |
 | [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | 已合并 | 2026-08-04 | 修复设置页窄窗口（≤900px）下的三个布局问题：子标签页撑满整行、记忆页面工作区选择器与建议按钮分离、子代理内置覆盖卡片溢出设置列。 | 4 文件, +108/-20 |
 | [#7238](https://github.com/esengine/DeepSeek-Reasonix/pull/7238) | 已合并 | 2026-08-03 | 新增用量统计面板：含日内 token 热力图、趋势折线堆叠图、模型用量饼图；支持 7/14/30/90 天及自定义时间范围；所有入口（桌面端/CLI/HTTP/bot/Remote Workbench）统一通过 `stats.Recorder` 记录；纯 SVG 手绘无第三方图表库；平均缓存命中率与模型归属统计。 | 64 文件, +4332/-155 |
 | [#7072](https://github.com/esengine/DeepSeek-Reasonix/pull/7072) | 已合并 | 2026-07-31 | 将终端重构为独立底部抽屉，添加拖拽调整大小手柄和手风琴动画，修复与右侧面板的布局冲突。修复 #7046, #7047。 | 7 文件, +420/-51 |
@@ -24,13 +25,12 @@
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | 已合并 | 2026-07-04 | 为输入框和消息气泡中的图片附件增加点击预览功能。关闭 #5832。 | 10 文件, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | 已合并 | 2026-07-03 | 修复桌面端粘贴文本在消息气泡中仅显示折叠标签而非实际内容。关闭 #5863。 | 7 文件, +211/-4 |
 
-已合并总计：13 个 PR，155 个变更文件，+6841/-551 行。
+已合并总计：14 个 PR，164 个变更文件，+7151/-685 行。
 
 ## 待审核的贡献
 
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
-| [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | 待审核 | 2026-08-04 | 使用统计图表改用 Primer 深浅两套配色：前 5 模型按排名各占系列色（`--chart-1`~`--chart-5`），其余归入灰色 Other；修复环形图 hover 溢出裁剪；命令面板新增使用统计入口。 | 9 文件, +310/-134 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
@@ -81,4 +81,4 @@
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-最后更新：2026-08-05。
+最后更新：2026-08-06。
