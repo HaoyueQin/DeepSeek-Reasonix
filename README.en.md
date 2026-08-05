@@ -31,6 +31,7 @@ Merged total from the upstream PR metadata above: 13 PRs, 155 changed-file entri
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
+| [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | Open | 2026-08-04 | Replaced the model usage chart monochrome ramp with GitHub Primer's two-set categorical palette: top 5 models each get a series colour (--chart-1..5), the rest collapse into gray Other; fixed donut hover overflow clipping; added usage-stats command palette entry. | 9 files, +310/-134 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
@@ -83,4 +84,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-04.
+Last refreshed: 2026-08-05.

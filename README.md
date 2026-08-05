@@ -30,6 +30,7 @@
 
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
+| [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | 待审核 | 2026-08-04 | 使用统计图表改用 Primer 深浅两套配色：前 5 模型按排名各占系列色（`--chart-1`~`--chart-5`），其余归入灰色 Other；修复环形图 hover 溢出裁剪；命令面板新增使用统计入口。 | 9 文件, +310/-134 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
@@ -80,4 +81,4 @@
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-最后更新：2026-08-04。
+最后更新：2026-08-05。
