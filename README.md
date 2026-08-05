@@ -56,6 +56,8 @@
 
 我的贡献在以下发布说明中获得致谢：
 
+- [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05（Primer 配色图表）
+- [v1.19.6](https://github.com/esengine/DeepSeek-Reasonix/pull/7471) — 2026-08-04（设置页响应式布局）
 - [v1.19.5](https://github.com/esengine/DeepSeek-Reasonix/pull/7364) — 2026-08-03（用量统计面板）
 - [v1.19.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7117) — 2026-08-01（终端抽屉重新设计、粘贴文本与文件引用卡片、右侧栏和状态栏数据持久化、决策卡片溢出）
 - [v1.19.0-preview.1](https://github.com/esengine/DeepSeek-Reasonix/pull/7116) — 2026-08-01（同上四条）

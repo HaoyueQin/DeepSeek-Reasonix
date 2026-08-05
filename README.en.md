@@ -57,6 +57,8 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 
 My contributions have been acknowledged in the following release notes:
 
+- [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05 (Primer palette charts)
+- [v1.19.6](https://github.com/esengine/DeepSeek-Reasonix/pull/7471) — 2026-08-04 (responsive settings layout)
 - [v1.19.5](https://github.com/esengine/DeepSeek-Reasonix/pull/7364) — 2026-08-03 (usage statistics panel)
 - [v1.19.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7117) — 2026-08-01 (terminal drawer redesign, pasted-text & file-ref cards, right-panel & status-bar persistence, decision card overflow)
 - [v1.19.0-preview.1](https://github.com/esengine/DeepSeek-Reasonix/pull/7116) — 2026-08-01 (same four entries)
