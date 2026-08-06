@@ -32,6 +32,7 @@ Merged total from the upstream PR metadata above: 14 PRs, 164 changed-file entri
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
+| [#7631](https://github.com/esengine/DeepSeek-Reasonix/pull/7631) | Open | 2026-08-05 | Fixed recovery-retry usage being summed into one record, which doubled the reported context fill and could trigger auto-compaction at half the real usage: billing and window accounting are now separated, the discarded attempt is billed as its own event, and `lastUsage` only ever holds the adopted attempt's clean values. Fixes #7620. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
