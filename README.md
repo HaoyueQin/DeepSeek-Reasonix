@@ -41,6 +41,7 @@
 
 | 我的 PR | 维护者 PR | 日期 | 关系 |
 | --- | --- | --- | --- |
+| [#7631](https://github.com/esengine/DeepSeek-Reasonix/pull/7631) | [#7737](https://github.com/esengine/DeepSeek-Reasonix/pull/7737) | 2026-08-06 | 恢复重试 usage 翻倍的诊断与分尝试计费设计被维护者审查采纳，重写为官方"原子重放中断流"实现并取代 #7631；未直接采用代码。 |
 | [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | 分段按钮等宽方案被明确整合，并附带 `Co-authored-by` 提交记录。 |
 | [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | 逐模型 `context_window` 覆盖功能被重写并作为官方实现落地。 |
 | [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP 持久化禁用概念被整合到更广泛的"默认信任"重构中。 |

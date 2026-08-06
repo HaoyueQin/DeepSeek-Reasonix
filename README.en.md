@@ -42,6 +42,7 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 
 | My PR | Maintainer PR | Date | Relationship |
 | --- | --- | --- | --- |
+| [#7631](https://github.com/esengine/DeepSeek-Reasonix/pull/7631) | [#7737](https://github.com/esengine/DeepSeek-Reasonix/pull/7737) | 2026-08-06 | Diagnosis and per-attempt billing design for the recovery-usage doubling were reviewed and adopted as the basis for the official atomic stream-replay implementation that supersedes #7631; no code was directly incorporated. |
 | [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | Equal-width segmented-button selector explicitly incorporated with `Co-authored-by` trailer. |
 | [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | Per-model `context_window` override feature rewritten and landed as the official implementation. |
 | [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP persistent disable concept incorporated into the broader "default trust" redesign. |
