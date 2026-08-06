@@ -111,3 +111,55 @@ func (i *ICoreWebView2_2) GetCookieManager() (*ICoreWebView2CookieManager, error
 	}
 	return cookieManager, nil
 }
+
+// CallDevToolsProtocolMethod invokes a Chrome DevTools Protocol method on the
+// webview and delivers the JSON result (or error) through handler. The handler
+// may be nil when the caller does not need the result. The CDP channel is the
+// supported way to reach browser-native capabilities (Accessibility tree,
+// Input dispatch, Page capture) that the WebView2 platform API does not expose.
+func (i *ICoreWebView2_2) CallDevToolsProtocolMethod(methodName, parametersAsJson string, handler *iCoreWebView2CallDevToolsProtocolMethodCompletedHandler) error {
+	u16method, err := windows.UTF16PtrFromString(methodName)
+	if err != nil {
+		return err
+	}
+	u16params, err := windows.UTF16PtrFromString(parametersAsJson)
+	if err != nil {
+		return err
+	}
+	var h uintptr
+	if handler != nil {
+		h = uintptr(unsafe.Pointer(handler))
+	}
+	hr, _, _ := i.vtbl.CallDevToolsProtocolMethod.Call(
+		uintptr(unsafe.Pointer(i)),
+		uintptr(unsafe.Pointer(u16method)),
+		uintptr(unsafe.Pointer(u16params)),
+		h,
+	)
+	if windows.Handle(hr) != windows.S_OK {
+		return windows.Errno(hr)
+	}
+	return nil
+}
+
+// Reload reloads the current page.
+func (i *ICoreWebView2_2) Reload() error {
+	hr, _, _ := i.vtbl.Reload.Call(uintptr(unsafe.Pointer(i)))
+	if windows.Handle(hr) != windows.S_OK {
+		return windows.Errno(hr)
+	}
+	return nil
+}
+
+// GetDocumentTitle returns the current page title.
+func (i *ICoreWebView2_2) GetDocumentTitle() (string, error) {
+	var title *uint16
+	hr, _, _ := i.vtbl.GetDocumentTitle.Call(uintptr(unsafe.Pointer(i)), uintptr(unsafe.Pointer(&title)))
+	if windows.Handle(hr) != windows.S_OK {
+		return "", windows.Errno(hr)
+	}
+	if title == nil {
+		return "", nil
+	}
+	return windows.UTF16PtrToString(title), nil
+}

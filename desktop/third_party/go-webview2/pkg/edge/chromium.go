@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"sync"
 	"sync/atomic"
 	"syscall"
 	"time"
@@ -101,6 +102,15 @@ type Chromium struct {
 	// Error handling
 	globalErrorCallback func(error)
 
+	// cdpHandler keeps the in-flight DevTools Protocol completion handler
+	// alive: the COM runtime holds only a raw pointer, so a Go reference must
+	// outlive the call, or a GC cycle between CallDevToolsProtocolMethod and
+	// the completion callback crashes the process. One handler slot is enough
+	// for the serialized CDP usage in this codebase; a second call replaces
+	// the previous in-flight callback.
+	cdpMu      sync.Mutex
+	cdpHandler *iCoreWebView2CallDevToolsProtocolMethodCompletedHandler
+
 	shuttingDown bool
 
 	// Resize debouncing
@@ -151,6 +161,9 @@ func NewChromium() *Chromium {
 	*/
 	e.permissions = make(map[CoreWebView2PermissionKind]CoreWebView2PermissionState)
 	e.globalErrorCallback = globalErrorHandler
+	// The first Chromium in the process is the Wails main webview; record it so
+	// the browser panel can shrink/restore its bounds without touching Wails.
+	RegisterMainChromium(e)
 	return e
 }
 
@@ -726,4 +739,126 @@ func (e *Chromium) GetCookieManager() (*ICoreWebView2CookieManager, error) {
 
 	// Note: The caller is responsible for calling Release() on the returned cookieManager
 	return cookieManager, nil
+}
+
+// CDPCallback receives the JSON result payload of a DevTools Protocol call.
+// It is invoked on the webview's UI thread, so callers must not block on it.
+type CDPCallback func(resultJSON string)
+
+// cdpHandlerImpl adapts the COM completion handler to a Go callback.
+type cdpHandlerImpl struct {
+	cb CDPCallback
+}
+
+func (h *cdpHandlerImpl) QueryInterface(_, _ uintptr) uintptr { return 0 }
+func (h *cdpHandlerImpl) AddRef() uintptr                    { return 1 }
+func (h *cdpHandlerImpl) Release() uintptr                   { return 1 }
+
+func (h *cdpHandlerImpl) CallDevToolsProtocolMethodCompleted(errorCode uintptr, resultJSON *uint16) uintptr {
+	if h.cb != nil && resultJSON != nil {
+		h.cb(windows.UTF16PtrToString(resultJSON))
+	}
+	return 0
+}
+
+// CallDevToolsProtocolMethod sends a Chrome DevTools Protocol command through
+// the webview's CDP channel. cb (when non-nil) receives the JSON result; the
+// handler is kept alive by the COM runtime until the call completes.
+func (e *Chromium) CallDevToolsProtocolMethod(method, params string, cb CDPCallback) error {
+	if e.webview == nil || e.shuttingDown {
+		return fmt.Errorf("webview not ready")
+	}
+	w2, err := e.webview.QueryInterface2()
+	if err != nil {
+		return fmt.Errorf("QueryInterface2: %w", err)
+	}
+	var handler *iCoreWebView2CallDevToolsProtocolMethodCompletedHandler
+	if cb != nil {
+		e.cdpMu.Lock()
+		e.cdpHandler = newICoreWebView2CallDevToolsProtocolMethodCompletedHandler(&cdpHandlerImpl{cb: cb})
+		handler = e.cdpHandler
+		e.cdpMu.Unlock()
+	}
+	if err := w2.CallDevToolsProtocolMethod(method, params, handler); err != nil {
+		return fmt.Errorf("CallDevToolsProtocolMethod(%s): %w", method, err)
+	}
+	return nil
+}
+
+// mainChromium holds the first Chromium instance created in the process — the
+// Wails main webview. The built-in browser panel needs to shrink and restore
+// the main webview's bounds to make room for its own WebView2 controller, and
+// the Wails frontend does not export its Chromium, so the fork records it here.
+var mainChromium struct {
+	mu  sync.Mutex
+	set bool
+	c   *Chromium
+}
+
+// RegisterMainChromium records the first created Chromium as the main webview.
+func RegisterMainChromium(c *Chromium) {
+	mainChromium.mu.Lock()
+	defer mainChromium.mu.Unlock()
+	if !mainChromium.set {
+		mainChromium.c = c
+		mainChromium.set = true
+	}
+}
+
+// MainChromium returns the main webview's Chromium instance (nil before any
+// Chromium exists, or when the fork is used outside the Wails shell).
+func MainChromium() *Chromium {
+	mainChromium.mu.Lock()
+	defer mainChromium.mu.Unlock()
+	return mainChromium.c
+}
+
+// Destroy releases the WebView2 COM objects so the browser process can exit
+// when the panel closes (lazy load/unload). The Chromium instance must not be
+// used after Destroy. WebView2 references the parent HWND, so callers should
+// also remove the webview's child windows before destroying.
+func (e *Chromium) Destroy() {
+	if e.shuttingDown {
+		return
+	}
+	e.shuttingDown = true
+	if e.controller != nil {
+		_ = e.controller.PutIsVisible(false)
+		e.controller.Release()
+		e.controller = nil
+	}
+	if e.webview != nil {
+		e.webview.Release()
+		e.webview = nil
+	}
+	if e.environment != nil {
+		// ICoreWebView2Environment has no Release wrapper; drop the Go
+		// reference and let the runtime own the COM lifetime.
+		e.environment = nil
+	}
+}
+
+// Reload reloads the current page (ICoreWebView2_2).
+func (e *Chromium) Reload() error {
+	if e.webview == nil || e.shuttingDown {
+		return fmt.Errorf("webview not ready")
+	}
+	w2, err := e.webview.QueryInterface2()
+	if err != nil {
+		return err
+	}
+	return w2.Reload()
+}
+
+// Webview2 exposes the underlying ICoreWebView2 for read-only introspection.
+func (e *Chromium) Webview2() *ICoreWebView2 {
+	return e.webview
+}
+
+// EvalJS runs JavaScript without waiting for a result (fire-and-forget).
+func (e *Chromium) EvalJS(script string) error {
+	if e.webview == nil || e.shuttingDown {
+		return fmt.Errorf("webview not ready")
+	}
+	return e.webview.ExecuteScript(script, nil)
 }

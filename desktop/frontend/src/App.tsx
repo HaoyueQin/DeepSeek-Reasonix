@@ -15,6 +15,8 @@ import {
   Minus,
   Search,
   Server,
+  Globe,
+  Plus,
   Square,
   SquarePen,
   PanelLeft,
@@ -89,6 +91,7 @@ import { startTerminalEventBridge } from "./lib/terminalEvents";
 import { applyTerminalThemePreference } from "./lib/terminalTheme";
 import { formatTerminalOutputForComposer } from "./lib/terminalOutput";
 import { useTerminalStore } from "./store/terminal";
+import { useBrowserStore } from "./store/browser";
 import { parseTodos } from "./lib/tools";
 import {
   dismissedTodoKeyForScope,
@@ -299,6 +302,7 @@ const RemotePanel = lazy(() => import("./components/RemotePanel").then((module) 
 const TerminalPanel = lazy(() => import("./components/TerminalPanel").then((module) => ({ default: module.TerminalPanel })));
 const TaskMonitorPanel = lazy(() => import("./components/TaskMonitorPanel").then((module) => ({ default: module.TaskMonitorPanel })));
 const WorkspacePanel = lazy(() => import("./components/WorkspacePanel").then((module) => ({ default: module.WorkspacePanel })));
+const BrowserPanel = lazy(() => import("./components/BrowserPanel").then((module) => ({ default: module.BrowserPanel })));
 
 const CHAT_MIN_WIDTH = 400;
 const CHAT_COMFORT_MIN_WIDTH = 560;
@@ -1669,6 +1673,8 @@ export default function App() {
       }),
     [chatReservedWidth, sidebarCollapsed, sidebarWidth, viewportWidth, workspacePanelMaximized, workspacePanelMinWidth, workspacePanelOpen],
   );
+  const browserOpen = useBrowserStore((s) => s.open);
+  const toggleBrowser = useBrowserStore((s) => s.toggle);
   const activeTab = useMemo(
     () => tabMetas.find((tab) => tab.id === activeTabId) ?? tabMetas.find((tab) => tab.active),
     [activeTabId, tabMetas],
@@ -5262,6 +5268,10 @@ export default function App() {
           />
         )}
 
+        <Suspense fallback={null}>
+          <BrowserPanel />
+        </Suspense>
+
         {workspacePanelRenderable && (
           <aside
             className={[
@@ -5316,6 +5326,16 @@ export default function App() {
                     <span className="workbench-dock__tab-label">{t("rightDock.remote")}</span>
                   </button>
                 )}
+                <button
+                  type="button"
+                  aria-selected={browserOpen}
+                  className={`workbench-dock__tab${browserOpen ? " workbench-dock__tab--active" : ""}`}
+                  onClick={() => void toggleBrowser()}
+                  title={t(browserOpen ? "browser.closeTitle" : "browser.openTitle")}
+                >
+                  {browserOpen ? <Globe size={13} /> : <Plus size={13} />}
+                  <span className="workbench-dock__tab-label">{t("browser.open")}</span>
+                </button>
               </div>
             </div>
             <div className="workbench-dock__body">

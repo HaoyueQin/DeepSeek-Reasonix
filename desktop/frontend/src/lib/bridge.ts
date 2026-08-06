@@ -370,6 +370,20 @@ export interface AppBindings {
   GitCheckout(branch: string): Promise<void>;
   WorkspaceGitHistory(tabID: string, path: string): Promise<GitCommitView[]>;
   WorkspaceGitCommitDetail(tabID: string, hash: string, path: string): Promise<GitCommitDetailView>;
+  // ── Browser panel ──
+  BrowserOpen(panelWidth: number): Promise<unknown>;
+  BrowserClose(): Promise<void>;
+  BrowserNavigate(url: string): Promise<void>;
+  BrowserBack(): Promise<void>;
+  BrowserForward(): Promise<void>;
+  BrowserReload(): Promise<void>;
+  BrowserSetPanelWidth(width: number): Promise<void>;
+  BrowserAddress(): Promise<[string, string, boolean]>;
+  BrowserSnapshot(): Promise<string>;
+  BrowserClearCache(): Promise<unknown>;
+  BrowserClearAllData(): Promise<unknown>;
+  BrowserControlEnabled(): Promise<boolean>;
+  SetBrowserControlEnabled(enabled: boolean): Promise<unknown>;
   OpenWorkspacePath(rel: string): Promise<void>;
   OpenWorkspacePathForTab(tabID: string, rel: string): Promise<void>;
   ExternalOpeners(): Promise<ExternalOpenersView>;
@@ -2192,6 +2206,45 @@ function makeMockApp(): AppBindings {
     },
     async CloseMainWindow() {
       console.info("mock CloseMainWindow");
+    },
+    async BrowserOpen(panelWidth: number) {
+      console.info("mock BrowserOpen", panelWidth);
+    },
+    async BrowserClose() {
+      console.info("mock BrowserClose");
+    },
+    async BrowserNavigate(url: string) {
+      console.info("mock BrowserNavigate", url);
+    },
+    async BrowserBack() {
+      console.info("mock BrowserBack");
+    },
+    async BrowserForward() {
+      console.info("mock BrowserForward");
+    },
+    async BrowserReload() {
+      console.info("mock BrowserReload");
+    },
+    async BrowserSetPanelWidth(width: number) {
+      console.info("mock BrowserSetPanelWidth", width);
+    },
+    async BrowserAddress() {
+      return ["", "", false] as [string, string, boolean];
+    },
+    async BrowserSnapshot() {
+      return '- root "mock" [ref=0]';
+    },
+    async BrowserClearCache() {
+      return null;
+    },
+    async BrowserClearAllData() {
+      return null;
+    },
+    async BrowserControlEnabled() {
+      return false;
+    },
+    async SetBrowserControlEnabled(enabled: boolean) {
+      console.info("mock SetBrowserControlEnabled", enabled);
     },
     async Platform() {
       const override = browserPlatformOverride();

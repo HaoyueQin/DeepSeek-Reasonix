@@ -116,6 +116,9 @@ type PromptHistoryResult struct {
 type App struct {
 	ctx context.Context
 
+	// browserHost owns the built-in browser panel (lazy; created in startup).
+	browserHost *BrowserHost
+
 	// taskCtrl is the process-wide task-monitor control service (lazy; see
 	// taskControl). One instance serializes control operations in-process.
 	taskCtrl     *taskmonitor.ControlService
@@ -549,6 +552,9 @@ func (a *App) startup(ctx context.Context) {
 
 	a.heartbeat = newHeartbeatEngine(a)
 	a.heartbeat.Start()
+
+	a.browserHost = newBrowserHost(a)
+	a.installBrowserSession()
 
 	a.mu.Lock()
 	a.tabsRestored = make(chan struct{})
@@ -2377,6 +2383,7 @@ func (a *App) clearActiveSessionRuntime(tab *WorkspaceTab, oldCtrl control.Sessi
 	newSink := &tabEventSink{tabID: tab.ID, app: a, ctx: a.ctx}
 	sharedHost := a.lookupSharedHost(snap.sharedHostKey)
 	newCtrl, err := boot.Build(a.bootContext(), boot.Options{
+		ExtraTools:              a.extraBrowserTools(),
 		Model:                    snap.model,
 		RequireKey:               false,
 		AutoPricingCurrency:      a.desktopAutoPricingCurrency(),
@@ -4590,6 +4597,7 @@ func (a *App) buildSessionRebindCandidate(
 		ownsSharedHostRef = true
 	}
 	ctrl, err := boot.Build(a.bootContext(), boot.Options{
+		ExtraTools:              a.extraBrowserTools(),
 		Model:                    model,
 		RequireKey:               false,
 		AutoPricingCurrency:      a.desktopAutoPricingCurrency(),
@@ -10077,6 +10085,7 @@ func (a *App) SetModelForTab(tabID, name string) (retErr error) {
 
 	stageStarted = time.Now()
 	newCtrl, err := boot.Build(a.bootContext(), boot.Options{
+		ExtraTools:              a.extraBrowserTools(),
 		Model:                    name,
 		RequireKey:               false,
 		AutoPricingCurrency:      a.desktopAutoPricingCurrency(),
@@ -10246,6 +10255,7 @@ func (a *App) SetEffortForTab(tabID, level string) error {
 	}
 	sharedHost := a.lookupSharedHost(snap.sharedHostKey)
 	newCtrl, err := boot.Build(a.bootContext(), boot.Options{
+		ExtraTools:              a.extraBrowserTools(),
 		Model:                    modelRef,
 		RequireKey:               false,
 		AutoPricingCurrency:      a.desktopAutoPricingCurrency(),
@@ -10383,6 +10393,7 @@ func (a *App) SetTokenModeForTab(tabID, mode string) error {
 	}
 	sharedHost := a.lookupSharedHost(snap.sharedHostKey)
 	newCtrl, err := boot.Build(a.bootContext(), boot.Options{
+		ExtraTools:              a.extraBrowserTools(),
 		Model:                    modelRef,
 		RequireKey:               false,
 		AutoPricingCurrency:      a.desktopAutoPricingCurrency(),

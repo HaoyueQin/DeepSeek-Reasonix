@@ -2392,3 +2392,23 @@ func (c *Config) SaveForRoot(root string) error {
 	}
 	return c.SaveTo(projectTOML)
 }
+
+// BrowserControlEnabled reports whether the built-in browser control is
+// enabled for new sessions (desktop-only preference; default off).
+func (c *Config) BrowserControlEnabled() bool {
+	if c == nil || c.Desktop.BrowserEnabled == nil {
+		return false
+	}
+	return *c.Desktop.BrowserEnabled
+}
+
+// SetBrowserControlEnabled persists the built-in browser control preference.
+// It is desktop-only UI state and never affects CLI sessions or provider data.
+func (c *Config) SetBrowserControlEnabled(enabled bool) error {
+	if c == nil {
+		return fmt.Errorf("nil config")
+	}
+	v := enabled
+	c.Desktop.BrowserEnabled = &v
+	return nil
+}

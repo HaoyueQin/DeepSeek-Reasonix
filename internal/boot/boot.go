@@ -130,6 +130,11 @@ type Options struct {
 	// (for example ACP session/new). They are connected eagerly for this
 	// controller but are not persisted to reasonix.toml.
 	ExtraPlugins []plugin.Spec
+	// ExtraTools are host-supplied built-in tools (for example the desktop
+	// browser panel tools) added to the session registry after the configured
+	// built-ins. The CLI never sets this, so the cache-stable tool prefix is
+	// byte-identical for CLI sessions.
+	ExtraTools []tool.Tool
 	// TokenMode selects the session's runtime profile. Empty/full/balanced preserves
 	// the normal capability surface. "economy" keeps the core coding tools visible
 	// and moves optional sources behind connect_tool_source. "delivery" keeps the
@@ -655,6 +660,11 @@ func build(ctx context.Context, opts Options) (*BuildResult, error) {
 	// where an empty list intentionally means "all built-ins".
 	if !tokenEconomy || len(cfg.Tools.Enabled) == 0 || len(enabledBuiltins) > 0 {
 		addBuiltins(reg, enabledBuiltins, writeRoots, bashSpec, bashTimeout, searchSpec, stderr, root, proxySpec, forbidReadRoots, readPathResolver, sessionGuard, managedConfig, opts.FileOverlay, opts.TerminalRunner)
+	}
+	// Host-supplied tools (desktop browser panel) ride outside the configured
+	// allowlist so they never disturb CLI sessions or the [tools] contract.
+	for _, t := range opts.ExtraTools {
+		reg.Add(t)
 	}
 	// Use the caller-supplied shared host when set, so controllers for the same
 	// workspace root reuse running MCP processes (e.g. one CodeGraph daemon

@@ -273,6 +273,10 @@ type DesktopConfig struct {
 	ProviderAccess    []string `toml:"provider_access"`    // desktop-only list of provider entries shown in Settings > Model > Access
 	ExpandThinking    bool     `toml:"expand_thinking"`    // true = show reasoning text expanded by default; false = collapsed
 	ConversationWidth string   `toml:"conversation_width"` // standard|full; max transcript width; empty = standard
+	// BrowserEnabled enables the built-in browser control (the Browser Use
+	// surface): new sessions may drive the in-app browser. Desktop-only state;
+	// nil keeps the default (disabled).
+	BrowserEnabled *bool `toml:"browser_enabled"`
 }
 
 // DesktopExternalOpener returns the user-selected external opener id. The

@@ -72,7 +72,7 @@ import { getSuccessPreference, setSuccessPreference, getAttentionPreference, set
 import { ModalCloseButton } from "./ModalCloseButton";
 import { ShortcutComboDisplay } from "./ShortcutComboDisplay";
 
-const SETTINGS_TABS: SettingsTab[] = ["general", "models", "bots", "mcp", "remote", "skills", "subagents", "plugins", "memory", "hooks", "diagnostics", "shortcuts", "permissions", "sandbox", "network", "appearance", "updates"];
+const SETTINGS_TABS: SettingsTab[] = ["general", "models", "bots", "mcp", "remote", "skills", "subagents", "plugins", "memory", "hooks", "diagnostics", "shortcuts", "permissions", "sandbox", "network", "appearance", "updates", "browser"];
 export type SettingsInitialFocus =
   | { target: "bot-allowlist"; connectionId?: string; requestId?: number }
   | { target: "model-access"; requestId?: number }
@@ -284,7 +284,7 @@ export function SettingsPanel({
   // sandbox, appearance, updates) need SettingsView loaded. MCP, Skills, Plugins,
   // and Memory
   // load their own data and render regardless.
-  const needsSettings = tab === "general" || tab === "models" || tab === "bots" || tab === "subagents" || tab === "network" || tab === "permissions" || tab === "sandbox" || tab === "appearance" || tab === "updates";
+  const needsSettings = tab === "general" || tab === "models" || tab === "bots" || tab === "subagents" || tab === "network" || tab === "permissions" || tab === "sandbox" || tab === "appearance" || tab === "updates" || tab === "browser";
   const lazySettingsPageFallback = <div className="empty">{t("settings.loading")}</div>;
 
   return (
@@ -395,6 +395,11 @@ export function SettingsPanel({
                         applyMonoFontFamily("custom");
                       }}
                     />
+                  </SettingsPageShell>
+                )}
+                {tab === "browser" && (
+                  <SettingsPageShell key={tab} s={s} tab={tab} busy={busy} apply={apply}>
+                    <BrowserSettingsSection busy={busy} />
                   </SettingsPageShell>
                 )}
                 {tab === "updates" && s && (
@@ -585,6 +590,8 @@ function settingsTabLabel(id: SettingsTab, t: ReturnType<typeof useT>): string {
       return t("settings.tab.appearance");
     case "updates":
       return t("settings.tab.updates");
+    case "browser":
+      return t("browser.settingsSection");
   }
 }
 
@@ -626,6 +633,8 @@ function settingsTabMeta(id: SettingsTab, s: SettingsView, t: ReturnType<typeof 
       return t("settings.appearanceMeta");
     case "updates":
       return t("settings.updatesMeta");
+    case "browser":
+      return t("browser.newSessionHint");
   }
 }
 
@@ -7444,5 +7453,65 @@ function UpdatesSection({
         </div>
       </details>
     </SettingsSection>
+  );
+}
+
+function BrowserSettingsSection({ busy }: { busy: boolean }) {
+  const { t } = useI18n();
+  const [enabled, setEnabled] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  useEffect(() => {
+    void app.BrowserControlEnabled().then((v) => {
+      setEnabled(Boolean(v));
+      setLoaded(true);
+    });
+  }, []);
+
+  const run = async (fn: () => Promise<unknown>, okKey: string) => {
+    setFeedback(null);
+    try {
+      const err = await fn();
+      setFeedback(err ? String(err) : t(okKey as never));
+    } catch (e) {
+      setFeedback(String(e));
+    }
+  };
+
+  if (!loaded) return null;
+
+  return (
+    <div className="settings-browser">
+      <SettingsField label={t("browser.controlLabel")} hint={t("browser.controlDesc")}>
+        <ToggleSegment
+          value={enabled}
+          disabled={busy}
+          onChange={(v) => {
+            setEnabled(v);
+            void app.SetBrowserControlEnabled(v);
+          }}
+        />
+      </SettingsField>
+      <div className="settings-browser__hint">{t("browser.newSessionHint")}</div>
+      <SettingsField label={t("browser.dataSection")}>
+        <span className="settings-browser__actions">
+          <InlineConfirmButton
+            label={t("browser.clearCache")}
+            cancelLabel={t("common.cancel")}
+            confirmLabel={t("common.confirm")}
+            onConfirm={() => run(() => app.BrowserClearCache(), "browser.clearCacheDone")}
+          />
+          <InlineConfirmButton
+            label={t("browser.clearAll")}
+            cancelLabel={t("common.cancel")}
+            confirmLabel={t("common.confirm")}
+            danger
+            onConfirm={() => run(() => app.BrowserClearAllData(), "browser.clearAllDone")}
+          />
+        </span>
+      </SettingsField>
+      {feedback && <div className="settings-browser__feedback">{feedback}</div>}
+    </div>
   );
 }
