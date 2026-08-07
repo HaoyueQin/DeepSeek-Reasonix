@@ -31,7 +31,7 @@
 
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
-| [#7631](https://github.com/esengine/DeepSeek-Reasonix/pull/7631) | 待审核 | 2026-08-05 | 修复恢复重试 usage 被合并求和导致上下文占用显示翻倍、压缩在真实用量一半时触发的问题：计费口径与窗口口径分离，被丢弃尝试单独计费，`lastUsage` 只保留被采用尝试的干净值。修复 #7620。 |
+| [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | 待审核 | 2026-08-07 | 修复气泡复制按钮复制占位符而非实际内容、运行中引导消息泄漏原始传输围栏的问题：复制时展开折叠的粘贴/选区块为完整文本，steer 消息经共享显示恢复链路折叠为内联可展开卡片。跟进 #7064。 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
@@ -85,4 +85,4 @@
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-最后更新：2026-08-06。
+最后更新：2026-08-07。
