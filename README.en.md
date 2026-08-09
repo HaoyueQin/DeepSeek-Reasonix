@@ -10,6 +10,7 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
+| [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Merged | 2026-08-08 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. | 18 files, +569/-65 |
 | [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | Merged | 2026-08-05 | Replaced the model usage chart monochrome ramp with GitHub Primer's two-set categorical palette: top 5 models each get a series colour (--chart-1..5), the rest collapse into gray Other; fixed donut hover overflow clipping; added usage-stats command palette entry. | 9 files, +310/-134 |
 | [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | Merged | 2026-08-04 | Fixed three settings-page layout problems at ≤900px: subtabs stretching full width, workspace selector separated from Suggestions button on the memory page, and built-in override cards overflowing the subagents column. | 4 files, +108/-20 |
 | [#7238](https://github.com/esengine/DeepSeek-Reasonix/pull/7238) | Merged | 2026-08-03 | Added a usage statistics panel with per-day token heatmap, daily stacked trend chart, and model-usage donut chart; supports 7/14/30/90-day and custom date ranges; all entry points (desktop/CLI/HTTP/bot/Remote Workbench) record through the same `stats.Recorder`; hand-drawn SVG, no third-party chart library; average cache hit rate and model attribution are included. | 64 files, +4332/-155 |
@@ -25,13 +26,14 @@ project; installation, releases, and canonical documentation belong there.
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 10 files, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 7 files, +211/-4 |
 
-Merged total from the upstream PR metadata above: 14 PRs, 164 changed-file entries,
-+7151/-685 lines.
+Merged total from the upstream PR metadata above: 15 PRs, 182 changed-file entries,
++7720/-750 lines.
 
 ## Open Contributions
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
+| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | Open | 2026-08-08 | Added an opt-in "auto-generate session titles" desktop setting: each new session's sidebar title comes from one short LLM request (off by default, optional dedicated title model), fixed missing titles on Goal first turns, and extracted the title-generation core shared by Serve and the desktop into internal/title (per-protocol reasoning disablement, think-block stripping, empty-result retries). Closes #7858. |
 | [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | Open | 2026-08-07 | Fixed bubble copy button copying placeholders instead of content and steer messages leaking raw transport framing: the copy button now expands folded paste/selection labels to full text, and steer messages recover through the shared display-recovery chain into inline expandable cards. Follow-up to #7064. |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
@@ -43,6 +45,7 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 | My PR | Maintainer PR | Date | Relationship |
 | --- | --- | --- | --- |
 | [#7631](https://github.com/esengine/DeepSeek-Reasonix/pull/7631) | [#7737](https://github.com/esengine/DeepSeek-Reasonix/pull/7737) | 2026-08-06 | Diagnosis and per-attempt billing design for the recovery-usage doubling were reviewed and adopted as the basis for the official atomic stream-replay implementation that supersedes #7631; no code was directly incorporated. |
+| [#6009](https://github.com/esengine/DeepSeek-Reasonix/pull/6009) | [#6764](https://github.com/esengine/DeepSeek-Reasonix/pull/6764) | 2026-07-21 | Shared `UpdaterProvider` update-state design explicitly adapted onto current `main-v2` (the static contract test was replaced with a rendered two-consumer state-sharing regression test); the adaptation commits carry `Co-authored-by` trailers. |
 | [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | Equal-width segmented-button selector explicitly incorporated with `Co-authored-by` trailer. |
 | [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | Per-model `context_window` override feature rewritten and landed as the official implementation. |
 | [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP persistent disable concept incorporated into the broader "default trust" redesign. |
@@ -59,6 +62,7 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 
 My contributions have been acknowledged in the following release notes:
 
+- [v1.21.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8039) — 2026-08-09 (status bar throughput display)
 - [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05 (Primer palette charts)
 - [v1.19.6](https://github.com/esengine/DeepSeek-Reasonix/pull/7471) — 2026-08-04 (responsive settings layout)
 - [v1.19.5](https://github.com/esengine/DeepSeek-Reasonix/pull/7364) — 2026-08-03 (usage statistics panel)
@@ -88,4 +92,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-07.
+Last refreshed: 2026-08-09.

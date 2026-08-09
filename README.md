@@ -10,6 +10,7 @@
 
 | PR | 状态 | 日期 | 贡献内容 | PR 元数据 |
 | --- | --- | --- | --- | --- |
+| [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 已合并 | 2026-08-08 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 | 18 文件, +569/-65 |
 | [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | 已合并 | 2026-08-05 | 使用统计图表改用 Primer 深浅两套配色：前 5 模型按排名各占系列色（`--chart-1`~`--chart-5`），其余归入灰色 Other；修复环形图 hover 溢出裁剪；命令面板新增使用统计入口。 | 9 文件, +310/-134 |
 | [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | 已合并 | 2026-08-04 | 修复设置页窄窗口（≤900px）下的三个布局问题：子标签页撑满整行、记忆页面工作区选择器与建议按钮分离、子代理内置覆盖卡片溢出设置列。 | 4 文件, +108/-20 |
 | [#7238](https://github.com/esengine/DeepSeek-Reasonix/pull/7238) | 已合并 | 2026-08-03 | 新增用量统计面板：含日内 token 热力图、趋势折线堆叠图、模型用量饼图；支持 7/14/30/90 天及自定义时间范围；所有入口（桌面端/CLI/HTTP/bot/Remote Workbench）统一通过 `stats.Recorder` 记录；纯 SVG 手绘无第三方图表库；平均缓存命中率与模型归属统计。 | 64 文件, +4332/-155 |
@@ -25,14 +26,14 @@
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | 已合并 | 2026-07-04 | 为输入框和消息气泡中的图片附件增加点击预览功能。关闭 #5832。 | 10 文件, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | 已合并 | 2026-07-03 | 修复桌面端粘贴文本在消息气泡中仅显示折叠标签而非实际内容。关闭 #5863。 | 7 文件, +211/-4 |
 
-已合并总计：14 个 PR，164 个变更文件，+7151/-685 行。
+已合并总计：15 个 PR，182 个变更文件，+7720/-750 行。
 
 ## 待审核的贡献
 
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
+| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | 待审核 | 2026-08-08 | 桌面端新增可选"自动生成会话标题"：每次新会话由模型生成简短侧栏标题（默认关闭，可单独指定标题模型），修复 Goal 模式首轮标题缺失，将 Serve 与桌面共享的标题生成提取为 internal/title 核心（按协议禁用思考、剥离 think 块、空结果重试）。关闭 #7858。 |
 | [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | 待审核 | 2026-08-07 | 修复气泡复制按钮复制占位符而非实际内容、运行中引导消息泄漏原始传输围栏的问题：复制时展开折叠的粘贴/选区块为完整文本，steer 消息经共享显示恢复链路折叠为内联可展开卡片。跟进 #7064。 |
-| [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 待审核 | 2026-07-25 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
 ## 被维护者吸收的贡献
@@ -42,6 +43,7 @@
 | 我的 PR | 维护者 PR | 日期 | 关系 |
 | --- | --- | --- | --- |
 | [#7631](https://github.com/esengine/DeepSeek-Reasonix/pull/7631) | [#7737](https://github.com/esengine/DeepSeek-Reasonix/pull/7737) | 2026-08-06 | 恢复重试 usage 翻倍的诊断与分尝试计费设计被维护者审查采纳，重写为官方"原子重放中断流"实现并取代 #7631；未直接采用代码。 |
+| [#6009](https://github.com/esengine/DeepSeek-Reasonix/pull/6009) | [#6764](https://github.com/esengine/DeepSeek-Reasonix/pull/6764) | 2026-07-21 | 共享 UpdaterProvider 更新状态设计被明确采纳并适配到当前 main-v2（以渲染双消费者状态共享回归测试替换静态契约测试），适配提交带 `Co-authored-by` 记录。 |
 | [#6726](https://github.com/esengine/DeepSeek-Reasonix/pull/6726) | [#6821](https://github.com/esengine/DeepSeek-Reasonix/pull/6821) | 2026-07-22 | 分段按钮等宽方案被明确整合，并附带 `Co-authored-by` 提交记录。 |
 | [#5943](https://github.com/esengine/DeepSeek-Reasonix/pull/5943) | [#6677](https://github.com/esengine/DeepSeek-Reasonix/pull/6677) | 2026-07-19 | 逐模型 `context_window` 覆盖功能被重写并作为官方实现落地。 |
 | [#5872](https://github.com/esengine/DeepSeek-Reasonix/pull/5872) | [#6889](https://github.com/esengine/DeepSeek-Reasonix/pull/6889) | 2026-07-24 | MCP 持久化禁用概念被整合到更广泛的"默认信任"重构中。 |
@@ -58,6 +60,7 @@
 
 我的贡献在以下发布说明中获得致谢：
 
+- [v1.21.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8039) — 2026-08-09（状态栏吞吐显示）
 - [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05（Primer 配色图表）
 - [v1.19.6](https://github.com/esengine/DeepSeek-Reasonix/pull/7471) — 2026-08-04（设置页响应式布局）
 - [v1.19.5](https://github.com/esengine/DeepSeek-Reasonix/pull/7364) — 2026-08-03（用量统计面板）
@@ -85,4 +88,4 @@
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-最后更新：2026-08-07。
+最后更新：2026-08-09。
