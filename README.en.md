@@ -10,6 +10,7 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
+| [#8099](https://github.com/esengine/DeepSeek-Reasonix/pull/8099) | Merged | 2026-08-09 | Fixed the refresh granularity introduced in #6931: the status bar now refreshes throughput after every executor `usage` event with the latest request rate, falling back to the completed-turn TPS only before the first request; measurable slow requests render as `<1 t/s` instead of stale values, and unmeasurable latest requests show `-`. | 5 files, +176/-32 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Merged | 2026-08-08 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. | 18 files, +569/-65 |
 | [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | Merged | 2026-08-05 | Replaced the model usage chart monochrome ramp with GitHub Primer's two-set categorical palette: top 5 models each get a series colour (--chart-1..5), the rest collapse into gray Other; fixed donut hover overflow clipping; added usage-stats command palette entry. | 9 files, +310/-134 |
 | [#7362](https://github.com/esengine/DeepSeek-Reasonix/pull/7362) | Merged | 2026-08-04 | Fixed three settings-page layout problems at ≤900px: subtabs stretching full width, workspace selector separated from Suggestions button on the memory page, and built-in override cards overflowing the subagents column. | 4 files, +108/-20 |
@@ -26,16 +27,16 @@ project; installation, releases, and canonical documentation belong there.
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 10 files, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 7 files, +211/-4 |
 
-Merged total from the upstream PR metadata above: 15 PRs, 182 changed-file entries,
-+7720/-750 lines.
+Merged total from the upstream PR metadata above: 16 PRs, 187 changed-file entries,
++7896/-782 lines.
 
 ## Open Contributions
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
+| [#8784](https://github.com/esengine/DeepSeek-Reasonix/pull/8784) | Open | 2026-08-13 | Wired clipboard interaction into the integrated terminal: Ctrl+C/Cmd+C copy a live selection and swallow the chord (without a selection the key still reaches the PTY as SIGINT), a right-click menu offers Copy / Paste / Add-to-chat, and selecting output raises the same floating "Add to chat" action used by the transcript; fixed the near-invisible light-mode selection highlight and set an explicit selectionForeground for ≥4.3:1 WCAG contrast in every theme. Fixes #7990, #8474, #8475, #7845. |
 | [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | Open | 2026-08-08 | Added an opt-in "auto-generate session titles" desktop setting: each new session's sidebar title comes from one short LLM request (off by default, optional dedicated title model), fixed missing titles on Goal first turns, and extracted the title-generation core shared by Serve and the desktop into internal/title (per-protocol reasoning disablement, think-block stripping, empty-result retries). Closes #7858. |
 | [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | Open | 2026-08-07 | Fixed bubble copy button copying placeholders instead of content and steer messages leaking raw transport framing: the copy button now expands folded paste/selection labels to full text, and steer messages recover through the shared display-recovery chain into inline expandable cards. Follow-up to #7064. |
-| [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Open | 2026-07-25 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
 ## Contributions Absorbed by Maintainer
@@ -62,6 +63,7 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 
 My contributions have been acknowledged in the following release notes:
 
+- [v1.22.0](https://github.com/esengine/DeepSeek-Reasonix/pull/8121) — 2026-08-10 (status bar TPS refresh after each request; credits list includes HaoyueQin)
 - [v1.21.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8039) — 2026-08-09 (status bar throughput display)
 - [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05 (Primer palette charts)
 - [v1.19.6](https://github.com/esengine/DeepSeek-Reasonix/pull/7471) — 2026-08-04 (responsive settings layout)
@@ -92,4 +94,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-09.
+Last refreshed: 2026-08-13.
