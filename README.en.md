@@ -35,7 +35,6 @@ Merged total from the upstream PR metadata above: 17 PRs, 214 changed-file entri
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
-| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | Open | 2026-08-08 | Added an opt-in "auto-generate session titles" desktop setting: each new session's sidebar title comes from one short LLM request (off by default, optional dedicated title model), fixed missing titles on Goal first turns, and extracted the title-generation core shared by Serve and the desktop into internal/title (per-protocol reasoning disablement, think-block stripping, empty-result retries). Closes #7858. Maintainer PR #8980 (merged in v1.25.4) cites this PR in its body as the broader automatic-title architecture exploration, but its narrower hardening of the explicit AI rename path adopts no code from it. |
 | [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | Open | 2026-08-07 | Fixed bubble copy button copying placeholders instead of content and steer messages leaking raw transport framing: the copy button now expands folded paste/selection labels to full text, and steer messages recover through the shared display-recovery chain into inline expandable cards. Follow-up to #7064. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
@@ -81,7 +80,7 @@ My contributions have been acknowledged in the following release notes:
 - **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, decision card overflow, natural file sorting, and settings-page narrow-window responsive layout.
 - **Terminal drawer & clipboard**: re-architected the terminal as an independent bottom drawer with resize handle and accordion animation; added copy/paste and selection-to-chat with per-tab selection state isolation.
 - **Configuration isolation**: `REASONIX_HOME` environment variable for isolated config, skills, and output-style scanning.
-- **Feature proposals**: per-model context window overrides, MCP persistent disable, status bar throughput display, and auto-generated session titles.
+- **Feature proposals**: per-model context window overrides, MCP persistent disable, and status bar throughput display.
 
 ## Branch Purpose
 
