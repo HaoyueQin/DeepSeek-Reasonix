@@ -10,6 +10,7 @@ project; installation, releases, and canonical documentation belong there.
 
 | PR | Status | Date | Contribution | PR metadata |
 | --- | --- | --- | --- | --- |
+| [#8784](https://github.com/esengine/DeepSeek-Reasonix/pull/8784) | Merged | 2026-08-16 | Wired a complete clipboard workflow into the integrated terminal: Ctrl+C/Cmd+C copy the exact live xterm selection (without a selection the key still reaches the PTY as SIGINT), a right-click menu offers Copy / Paste / Add-to-chat, and selections enter the composer as structured context tagged `source: "terminal"`; async copy cleanup checks both terminal generation and selection revision, and selection state is scoped per tab; fixed the near-invisible light-mode selection highlight and set an explicit selectionForeground for ≥4.3:1 WCAG contrast in every theme. Fixes #8475, #7845 (also Refs #7990, #8474). The integration commit carries the verified `Co-authored-by` identity from #7580. | 27 files, +1223/-169 |
 | [#8099](https://github.com/esengine/DeepSeek-Reasonix/pull/8099) | Merged | 2026-08-09 | Fixed the refresh granularity introduced in #6931: the status bar now refreshes throughput after every executor `usage` event with the latest request rate, falling back to the completed-turn TPS only before the first request; measurable slow requests render as `<1 t/s` instead of stale values, and unmeasurable latest requests show `-`. | 5 files, +176/-32 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | Merged | 2026-08-08 | Added tok/s throughput, cache token counts, and output tokens to the status bar with streaming estimation in the run strip. | 18 files, +569/-65 |
 | [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | Merged | 2026-08-05 | Replaced the model usage chart monochrome ramp with GitHub Primer's two-set categorical palette: top 5 models each get a series colour (--chart-1..5), the rest collapse into gray Other; fixed donut hover overflow clipping; added usage-stats command palette entry. | 9 files, +310/-134 |
@@ -27,15 +28,14 @@ project; installation, releases, and canonical documentation belong there.
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | Merged | 2026-07-04 | Added click-to-preview for image attachments in composer and message bubbles. Closes #5832. | 10 files, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | Merged | 2026-07-03 | Fixed pasted text showing only fold labels instead of content in message bubbles. Closes #5863. | 7 files, +211/-4 |
 
-Merged total from the upstream PR metadata above: 16 PRs, 187 changed-file entries,
-+7896/-782 lines.
+Merged total from the upstream PR metadata above: 17 PRs, 214 changed-file entries,
++9119/-951 lines.
 
 ## Open Contributions
 
 | PR | Status | Date | Contribution |
 | --- | --- | --- | --- |
-| [#8784](https://github.com/esengine/DeepSeek-Reasonix/pull/8784) | Open | 2026-08-13 | Wired clipboard interaction into the integrated terminal: Ctrl+C/Cmd+C copy a live selection and swallow the chord (without a selection the key still reaches the PTY as SIGINT), a right-click menu offers Copy / Paste / Add-to-chat, and selecting output raises the same floating "Add to chat" action used by the transcript; fixed the near-invisible light-mode selection highlight and set an explicit selectionForeground for ≥4.3:1 WCAG contrast in every theme. Fixes #7990, #8474, #8475, #7845. |
-| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | Open | 2026-08-08 | Added an opt-in "auto-generate session titles" desktop setting: each new session's sidebar title comes from one short LLM request (off by default, optional dedicated title model), fixed missing titles on Goal first turns, and extracted the title-generation core shared by Serve and the desktop into internal/title (per-protocol reasoning disablement, think-block stripping, empty-result retries). Closes #7858. |
+| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | Open | 2026-08-08 | Added an opt-in "auto-generate session titles" desktop setting: each new session's sidebar title comes from one short LLM request (off by default, optional dedicated title model), fixed missing titles on Goal first turns, and extracted the title-generation core shared by Serve and the desktop into internal/title (per-protocol reasoning disablement, think-block stripping, empty-result retries). Closes #7858. Maintainer PR #8980 (merged in v1.25.4) cites this PR in its body as the broader automatic-title architecture exploration, but its narrower hardening of the explicit AI rename path adopts no code from it. |
 | [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | Open | 2026-08-07 | Fixed bubble copy button copying placeholders instead of content and steer messages leaking raw transport framing: the copy button now expands folded paste/selection labels to full text, and steer messages recover through the shared display-recovery chain into inline expandable cards. Follow-up to #7064. |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | Open | 2026-07-06 | Replaced lexicographic file sorting with natural sort across the entire codebase (sidebar, CLI, file references). Closes #6042. |
 
@@ -63,6 +63,7 @@ These PRs were closed by me after the maintainer incorporated the work into thei
 
 My contributions have been acknowledged in the following release notes:
 
+- [v1.25.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8984) — 2026-08-16 (integrated terminal clipboard & selection-to-chat, #8784 listed as a highlight; credits list includes HaoyueQin)
 - [v1.22.0](https://github.com/esengine/DeepSeek-Reasonix/pull/8121) — 2026-08-10 (status bar TPS refresh after each request; credits list includes HaoyueQin)
 - [v1.21.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8039) — 2026-08-09 (status bar throughput display)
 - [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05 (Primer palette charts)
@@ -78,9 +79,9 @@ My contributions have been acknowledged in the following release notes:
 - **Desktop theme system**: pane opacity controls, scene-level transparency tiers (landed via #7159), save/apply state correctness, and dock-tab compression on Windows frameless.
 - **Usage statistics panel**: hand-drawn SVG heatmap, trend chart, and donut chart for per-day token usage, cache hit rate, and model distribution across all product entry points.
 - **UI bug fixes**: model list overlap, pasted text display, image preview, safe-area button width, decision card overflow, natural file sorting, and settings-page narrow-window responsive layout.
-- **Terminal drawer**: re-architected the terminal as an independent bottom drawer with resize handle and accordion animation.
+- **Terminal drawer & clipboard**: re-architected the terminal as an independent bottom drawer with resize handle and accordion animation; added copy/paste and selection-to-chat with per-tab selection state isolation.
 - **Configuration isolation**: `REASONIX_HOME` environment variable for isolated config, skills, and output-style scanning.
-- **Feature proposals**: per-model context window overrides, MCP persistent disable, and status bar throughput display.
+- **Feature proposals**: per-model context window overrides, MCP persistent disable, status bar throughput display, and auto-generated session titles.
 
 ## Branch Purpose
 
@@ -94,4 +95,4 @@ Closed upstream PRs authored by `HaoyueQin`:
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-Last refreshed: 2026-08-13.
+Last refreshed: 2026-08-18.

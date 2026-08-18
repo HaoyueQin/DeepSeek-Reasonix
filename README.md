@@ -10,6 +10,7 @@
 
 | PR | 状态 | 日期 | 贡献内容 | PR 元数据 |
 | --- | --- | --- | --- | --- |
+| [#8784](https://github.com/esengine/DeepSeek-Reasonix/pull/8784) | 已合并 | 2026-08-16 | 为内置终端接入完整的剪贴板工作流：Ctrl+C/Cmd+C 精确复制活动选区（无选区时仍作为 SIGINT 直达 PTY），右键菜单提供复制/粘贴/添加到聊天，选区以带 `source: "terminal"` 的结构化引用进入 composer；异步复制清理同时校验终端 generation 与选区 revision，选区状态按标签隔离；修复浅色模式近白选区不可见，显式设置 selectionForeground 保证各主题 WCAG 对比度 ≥ 4.3:1。修复 #8475, #7845（另引用 #7990, #8474）。集成 commit 带 #7580 的 Co-authored-by 记录。 | 27 文件, +1223/-169 |
 | [#8099](https://github.com/esengine/DeepSeek-Reasonix/pull/8099) | 已合并 | 2026-08-09 | 修正 #6931 引入的刷新粒度：状态栏吞吐改为每次 executor `usage` 事件后按最新请求更新，仅在会话尚无请求时以已完成回合 TPS 兜底；慢请求（<1 t/s）显示 `<1 t/s` 而非旧值，无法测得的请求显示 `-`。 | 5 文件, +176/-32 |
 | [#6931](https://github.com/esengine/DeepSeek-Reasonix/pull/6931) | 已合并 | 2026-08-08 | 底部状态栏新增 tok/s 吞吐、缓存 token 和输出 token 显示，输入框上方 run strip 新增流式吞吐量估算。 | 18 文件, +569/-65 |
 | [#7503](https://github.com/esengine/DeepSeek-Reasonix/pull/7503) | 已合并 | 2026-08-05 | 使用统计图表改用 Primer 深浅两套配色：前 5 模型按排名各占系列色（`--chart-1`~`--chart-5`），其余归入灰色 Other；修复环形图 hover 溢出裁剪；命令面板新增使用统计入口。 | 9 文件, +310/-134 |
@@ -27,14 +28,13 @@
 | [#5906](https://github.com/esengine/DeepSeek-Reasonix/pull/5906) | 已合并 | 2026-07-04 | 为输入框和消息气泡中的图片附件增加点击预览功能。关闭 #5832。 | 10 文件, +421/-27 |
 | [#5887](https://github.com/esengine/DeepSeek-Reasonix/pull/5887) | 已合并 | 2026-07-03 | 修复桌面端粘贴文本在消息气泡中仅显示折叠标签而非实际内容。关闭 #5863。 | 7 文件, +211/-4 |
 
-已合并总计：16 个 PR，187 个变更文件，+7896/-782 行。
+已合并总计：17 个 PR，214 个变更文件，+9119/-951 行。
 
 ## 待审核的贡献
 
 | PR | 状态 | 日期 | 贡献内容 |
 | --- | --- | --- | --- |
-| [#8784](https://github.com/esengine/DeepSeek-Reasonix/pull/8784) | 待审核 | 2026-08-13 | 为内置终端接入剪贴板交互：Ctrl+C/Cmd+C 复制活动选区（无选区时仍作为 SIGINT 直达 PTY），右键菜单提供复制/粘贴/添加到聊天，选中输出弹出与会话区一致的"添加到聊天"浮动按钮；修复选区在浅色模式下近白不可见的问题，并显式设置 selectionForeground 保证各主题下 WCAG 对比度 ≥ 4.3:1。关闭 #7990, #8474, #8475, #7845。 |
-| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | 待审核 | 2026-08-08 | 桌面端新增可选"自动生成会话标题"：每次新会话由模型生成简短侧栏标题（默认关闭，可单独指定标题模型），修复 Goal 模式首轮标题缺失，将 Serve 与桌面共享的标题生成提取为 internal/title 核心（按协议禁用思考、剥离 think 块、空结果重试）。关闭 #7858。 |
+| [#7980](https://github.com/esengine/DeepSeek-Reasonix/pull/7980) | 待审核 | 2026-08-08 | 桌面端新增可选"自动生成会话标题"：每次新会话由模型生成简短侧栏标题（默认关闭，可单独指定标题模型），修复 Goal 模式首轮标题缺失，将 Serve 与桌面共享的标题生成提取为 internal/title 核心（按协议禁用思考、剥离 think 块、空结果重试）。关闭 #7858。维护者 #8980（v1.25.4 已合并）在 body 中将本 PR 引为更宽泛的自动标题架构探索，但其更窄的显式 AI 重命名加固未采用本 PR 代码。 |
 | [#7868](https://github.com/esengine/DeepSeek-Reasonix/pull/7868) | 待审核 | 2026-08-07 | 修复气泡复制按钮复制占位符而非实际内容、运行中引导消息泄漏原始传输围栏的问题：复制时展开折叠的粘贴/选区块为完整文本，steer 消息经共享显示恢复链路折叠为内联可展开卡片。跟进 #7064。 |
 | [#6084](https://github.com/esengine/DeepSeek-Reasonix/pull/6084) | 待审核 | 2026-07-06 | 将整个代码库的文件排序从字典序替换为自然排序（侧边栏、CLI、文件引用）。关闭 #6042。 |
 
@@ -62,6 +62,7 @@
 
 我的贡献在以下发布说明中获得致谢：
 
+- [v1.25.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8984) — 2026-08-16（集成终端剪贴板与选中内容添加到聊天，#8784 列为重点内容，致谢列表包含 HaoyueQin）
 - [v1.22.0](https://github.com/esengine/DeepSeek-Reasonix/pull/8121) — 2026-08-10（状态栏 TPS 每次请求后更新，致谢列表包含 HaoyueQin）
 - [v1.21.4](https://github.com/esengine/DeepSeek-Reasonix/pull/8039) — 2026-08-09（状态栏吞吐显示）
 - [v1.20.0](https://github.com/esengine/DeepSeek-Reasonix/pull/7622) — 2026-08-05（Primer 配色图表）
@@ -77,9 +78,9 @@
 - **桌面主题系统**：面板透明度控制、场景级透明度分层（经 #7159 完整落地）、保存/应用状态正确性、Windows 无边框窗口下侧栏标签压缩。
 - **使用统计面板**：纯前端 SVG 手绘热力图、趋势图与饼图，统一统计所有产品入口的 token 用量、缓存命中率与模型分布。
 - **UI Bug 修复**：模型列表重叠、粘贴文本显示、图片预览、安全区域按钮宽度、决策卡片溢出、自然文件排序、设置页窄窗口响应式布局。
-- **终端抽屉**：将终端重构为独立底部抽屉，添加拖拽调整大小手柄和手风琴动画。
+- **终端抽屉与剪贴板**：将终端重构为独立底部抽屉，支持拖拽调整大小与手风琴动画；接入复制/粘贴与选中内容添加到聊天，选区状态按标签隔离。
 - **配置隔离**：`REASONIX_HOME` 环境变量支持隔离配置、技能和输出风格扫描。
-- **功能提案**：逐模型上下文窗口覆盖、MCP 持久化禁用、状态栏吞吐量显示。
+- **功能提案**：逐模型上下文窗口覆盖、MCP 持久化禁用、状态栏吞吐量显示、自动生成会话标题。
 
 ## 分支用途
 
@@ -91,4 +92,4 @@
 
 https://github.com/esengine/DeepSeek-Reasonix/pulls?q=is%3Apr+is%3Aclosed+author%3AHaoyueQin
 
-最后更新：2026-08-13。
+最后更新：2026-08-18。
